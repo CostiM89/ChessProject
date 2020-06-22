@@ -1,5 +1,8 @@
 package com.solarwindsmsp.chess;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pawn {
 
     private ChessBoard chessBoard;
@@ -44,7 +47,31 @@ public class Pawn {
     }
 
     public void Move(MovementType movementType, int newX, int newY) {
-        throw new UnsupportedOperationException("Need to implement Pawn.Move()") ;
+        List<MovementType> moves = new ArrayList<MovementType>();
+        moves.clear();
+        if (getPieceColor().equals(PieceColor.WHITE)) {
+            for (int i=0; i <= newX; i++) {
+                if (newY > 0) {
+                    moves.add(newY - 1, MovementType.MOVE);
+                    newX++;
+                    newY++;
+                }
+                if (newY == ChessBoard.MAX_BOARD_HEIGHT) {
+                    moves.add(newY - 2, MovementType.MOVE);
+                }
+            }
+        } else {
+            for (int j=0; j < newX; j++) {
+                if (newY < ChessBoard.MAX_BOARD_HEIGHT) {
+                    moves.add(newY + 1, MovementType.MOVE);
+                    newY++;
+                    newX++;
+                }
+                if (newY == 0) {
+                    moves.add(newY + 2, MovementType.MOVE);
+                }
+            }
+        }
     }
 
     @Override
