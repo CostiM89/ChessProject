@@ -1,9 +1,7 @@
 package com.solarwindsmsp.chess;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Pawn {
 
@@ -51,22 +49,18 @@ public class Pawn {
     public void Move(MovementType movementType, int newX, int newY) {
         List<MovementType> moves = new ArrayList<MovementType>();
         if (getPieceColor().equals(PieceColor.WHITE)) {
-            for (int i =0; i < ChessBoard.MAX_BOARD_HEIGHT; i++) {
-                if (newY > 0) {
-                    moves.add(newY - 1, movementType.MOVE);
-                }
-                if (newY == ChessBoard.MAX_BOARD_HEIGHT) {
-                    moves.add(newY - 2, movementType.MOVE);
-                }
+            if (newY > 0) {
+                moves.add(newY - 1, movementType.MOVE);
+            }
+            if (newY == ChessBoard.MAX_BOARD_HEIGHT) {
+                moves.add(newY - 2, movementType.MOVE);
             }
         } else {
-            for (int j = 0; j < ChessBoard.MAX_BOARD_WIDTH; j++) {
-                if (newY > 0) {
-                    moves.add(newY + 1, movementType.MOVE);
-                }
-                if (newY == ChessBoard.MAX_BOARD_WIDTH) {
-                    moves.add(newX + 2, movementType.MOVE);
-                }
+            if (newY > 0) {
+                moves.add(newY + 1, movementType.MOVE);
+            }
+            if (newY == ChessBoard.MAX_BOARD_WIDTH) {
+                moves.add(newX + 2, movementType.MOVE);
             }
         }
     }

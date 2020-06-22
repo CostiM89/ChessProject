@@ -44,16 +44,17 @@ public class ChessBoard {
     }
 
     public boolean IsLegalBoardPosition(int xCoordinate, int yCoordinate) {
+        // find if position is legal only for Pawns
         for (Pawn[] pawns : pieces) {
             for (Pawn pawn : pawns) {
                 if (PieceColor.WHITE.equals(true)) {
-                    if (yCoordinate <= ChessBoard.MAX_BOARD_HEIGHT) {
+                    if (yCoordinate == ChessBoard.MAX_BOARD_HEIGHT - 6) {
                         return true;
                     } else {
                         return false;
                     }
                 } else {
-                    if (xCoordinate <= ChessBoard.MAX_BOARD_WIDTH) {
+                    if (xCoordinate == ChessBoard.MAX_BOARD_WIDTH) {
                         return true;
                     } else {
                         return false;
