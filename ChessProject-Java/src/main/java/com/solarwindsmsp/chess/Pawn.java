@@ -1,7 +1,9 @@
 package com.solarwindsmsp.chess;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Pawn {
 
@@ -14,7 +16,7 @@ public class Pawn {
         this.pieceColor = pieceColor;
     }
 
-    public ChessBoard getChesssBoard() {
+    public ChessBoard getChessBoard() {
         return chessBoard;
     }
 
@@ -48,27 +50,22 @@ public class Pawn {
 
     public void Move(MovementType movementType, int newX, int newY) {
         List<MovementType> moves = new ArrayList<MovementType>();
-        moves.clear();
         if (getPieceColor().equals(PieceColor.WHITE)) {
-            for (int i=0; i <= newX; i++) {
+            for (int i =0; i < ChessBoard.MAX_BOARD_HEIGHT; i++) {
                 if (newY > 0) {
-                    moves.add(newY - 1, MovementType.MOVE);
-                    newX++;
-                    newY++;
+                    moves.add(newY - 1, movementType.MOVE);
                 }
                 if (newY == ChessBoard.MAX_BOARD_HEIGHT) {
-                    moves.add(newY - 2, MovementType.MOVE);
+                    moves.add(newY - 2, movementType.MOVE);
                 }
             }
         } else {
-            for (int j=0; j < newX; j++) {
-                if (newY < ChessBoard.MAX_BOARD_HEIGHT) {
-                    moves.add(newY + 1, MovementType.MOVE);
-                    newY++;
-                    newX++;
+            for (int j = 0; j < ChessBoard.MAX_BOARD_WIDTH; j++) {
+                if (newY > 0) {
+                    moves.add(newY + 1, movementType.MOVE);
                 }
-                if (newY == 0) {
-                    moves.add(newY + 2, MovementType.MOVE);
+                if (newY == ChessBoard.MAX_BOARD_WIDTH) {
+                    moves.add(newX + 2, movementType.MOVE);
                 }
             }
         }

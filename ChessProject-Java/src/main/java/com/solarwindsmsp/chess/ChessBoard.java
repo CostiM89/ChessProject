@@ -26,7 +26,6 @@ public class ChessBoard {
             if (xCoordinate == ChessBoard.MAX_BOARD_WIDTH) {
                 xCoordinate = pawn.getXCoordinate() - 2;
             }
-            pieces = new Pawn[xCoordinate][yCoordinate];
         } else {
             if (yCoordinate < ChessBoard.MAX_BOARD_HEIGHT) {
                 yCoordinate = pawn.getYCoordinate() + 1;
@@ -40,21 +39,21 @@ public class ChessBoard {
             if (xCoordinate == 0) {
                 xCoordinate = pawn.getXCoordinate() + 2;
             }
-            pieces = new Pawn[xCoordinate][yCoordinate];
         }
+        pieces = new Pawn[xCoordinate][yCoordinate];
     }
 
     public boolean IsLegalBoardPosition(int xCoordinate, int yCoordinate) {
         for (Pawn[] pawns : pieces) {
             for (Pawn pawn : pawns) {
-                if (pawn.getPieceColor().equals(PieceColor.WHITE)) {
-                    if (yCoordinate == 1) {
+                if (PieceColor.WHITE.equals(true)) {
+                    if (yCoordinate <= ChessBoard.MAX_BOARD_HEIGHT) {
                         return true;
                     } else {
                         return false;
                     }
                 } else {
-                    if (xCoordinate == 6) {
+                    if (xCoordinate <= ChessBoard.MAX_BOARD_WIDTH) {
                         return true;
                     } else {
                         return false;
@@ -62,6 +61,6 @@ public class ChessBoard {
                 }
             }
         }
-        return false;
+        return true;
     }
 }
