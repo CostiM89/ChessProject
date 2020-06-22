@@ -54,7 +54,7 @@ public class ChessBoard {
                         return false;
                     }
                 } else {
-                    if (xCoordinate == ChessBoard.MAX_BOARD_WIDTH) {
+                    if (xCoordinate == ChessBoard.MAX_BOARD_WIDTH - 1) {
                         return true;
                     } else {
                         return false;
